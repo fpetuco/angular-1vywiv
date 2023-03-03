@@ -22,6 +22,7 @@
         [(ngModel)]="appliedFilter.hero"
         (change)="setValue('hero', $event)"
         (p-change)="d()"
+        (blur)="heyBlur()"
         [p-disabled]="disabled"
         p-label="Hero 1"
         p-field-label="label"

@@ -251,11 +251,11 @@ export class AppComponent {
   }
 
   public apply(): void {
-    this.appliedFilter = {
+    /*this.appliedFilter = {
       ...this.appliedFilter,
       hero: this.fields.hero,
       programCode: this.fields.programCode,
-    };
+    };*/
 
     this.applyAdvancedFilter(this.fields);
     //this.heroModal.close();
@@ -276,6 +276,10 @@ export class AppComponent {
 
   public closeHeroModal(): void {
     this.heroModal.close();
+  }
+
+  public heyBlur() {
+    alert('Hello');
   }
 
   getColumns(): Array<PoTableColumn> {
