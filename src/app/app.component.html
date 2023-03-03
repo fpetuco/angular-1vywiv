@@ -1,0 +1,70 @@
+<po-modal
+  #heroModal
+  p-title="search-hero"
+  (ngModelChange)="log('ngModelChange', 'po-modal')"
+  (change)="log('ngModelChange', 'po-modal')"
+  [p-primary-action]="applyAction"
+>
+  <form #heroFilterForm="ngForm">
+    <div class="po-row">
+      <p>
+        Use esses nome como exemplo:<br />Tony Stark, Robert Bruce Banner, Bruce
+        Wayne, Steve Rogers, Peter Parker
+      </p>
+    </div>
+    <div class="po-row">&nbsp;</div>
+    <div class="po-row">
+      <po-lookup
+        #filterLookup
+        class="po-md-6"
+        id="hero"
+        name="hero"
+        [(ngModel)]="appliedFilter.hero"
+        (change)="setValue('hero', $event)"
+        (p-change)="d()"
+        [p-disabled]="disabled"
+        p-label="Hero 1"
+        p-field-label="label"
+        p-field-value="value"
+        p-filter-service="https://po-sample-api.fly.dev/v1/heroes"
+      >
+      </po-lookup>
+    </div>
+
+    <div class="po-row">
+      <po-lookup
+        #filterLookup
+        class="po-md-6"
+        id="programCode"
+        name="programCode"
+        [(ngModel)]="appliedFilter.programCode"
+        (change)="setValue('programCode', $event)"
+        (p-change)="d()"
+        [p-disabled]="disabled"
+        p-label="Hero 2"
+        p-field-label="label"
+        p-field-value="value"
+        p-filter-service="https://po-sample-api.fly.dev/v1/heroes"
+      >
+      </po-lookup>
+    </div>
+  </form>
+</po-modal>
+
+<po-page-list
+  #poPageList
+  p-title="Hiring processes"
+  [p-breadcrumb]="breadcrumb"
+  [p-disclaimer-group]="disclaimerGroup"
+  [p-filter]="filterSettings"
+>
+  <po-table
+    [p-selectable]="true"
+    [p-single-select]="true"
+    [p-sort]="true"
+    [p-striped]="true"
+    [p-columns]="hiringProcessesColumns"
+    [p-items]="hiringProcessesFiltered"
+  >
+  </po-table>
+</po-page-list>
